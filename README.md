@@ -2,26 +2,57 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
-## Development server
+### ag-grid
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The "ag" part of ag-Grid stands for "agnostic". The internal ag-Grid engine is implemented in TypeScript with zero dependencies. ag-Grid supports Angular through a wrapper component. The wrapper lets you use ag-Grid in your application like any other Angular component – you pass configuration through property bindings and handle events through event bindings. You can even use Angular components to customize the grid UI and cell contents / behavior.
 
-## Code scaffolding
+Refer this link https://www.ag-grid.com/angular-getting-started/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Install
+```
+npm install --save ag-grid ag-grid-angular
 
-## Build
+```
+***app.module.ts***
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AgGridModule.withComponents([])],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+```
+***style.css***
 
-## Running unit tests
+```
+@import "~ag-grid/dist/styles/ag-grid.css";
+@import "~ag-grid/dist/styles/ag-theme-balham.css";
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+***app.component.html***
 
-## Running end-to-end tests
+```
+<ag-grid-angular 
+    style="width: 87%; height: 370px;" 
+    class="ag-theme-balham"
+    [rowData]="rowData" 
+    [columnDefs]="columnDefs"
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    [enableSorting]="true"
+    [multiSortKey]="multiSortKey"
+    [animateRows]="true"
 
-## Further help
+    [pagination]="true"
+    [paginationPageSize]="8"
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    [enableFilter]="true"
+    [floatingFilter]="true"
+
+    >
+</ag-grid-angular>
+```
+### Screenshot
+![ag-grid-demo.png](ag-grid-demo.png)
+
+### Happy Coding
